@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LIBRI</title>
+    </head>
+    <body>
+        <h1><center>LIBRI DB</center></h1>
+
+
+
+        <h2>LISTA LIBRI  </h2>
+        <div th:each="libri : ${libri}">
+
+
+            <b>  Libro </b> <span th:text="${libri.id}"></span>
+            <br>
+            <b>  Nome Libro = </b> <span th:text="${libri.nome_libro}"></span>
+            <br>
+
+           <b> Numero di pagine = </b> <span th:text="${libri.numero_pagine}"></span>
+            <br>
+
+            <form action="/modifica" method="post"> <input type="hidden" name="id" th:value="${libri.id}">
+                <button>modifica</button>
+            </form>            +++++++++++++++++
+            <form action="/elimina" method="post"> <input type="hidden" name="id" th:value="${libri.id}">
+                <button>elimina</button>
+            </form>            
+   
+            ------------------------------------------------------------------------------
+            <br>      <br>
+        </div>  
+        <h2>INSERISCI UN NUVO LIBRO </h2>
+        <br>
+        <form action="/create" method="post">
+        NOME DEL LIBRO : <input type="text" placeholder="Inserisci nome libro" name="nome_libro">
+        <br>
+        NUMERO DI PAGINE : <input type="number" placeholder="Inserisci pagine libro" name="numero_pagine">
+        <input type="submit" value="Invia">
+
+        </form>
+
+    </body>
+    </html>
