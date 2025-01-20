@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Abbigliamento</title>
+</head>
+<body>
+    <center><h1>Abbigliamento DB</h1></center>
+
+    <h2>Lista dei Capi Inseriti</h2>
+    <table border="1px">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Tipologia</th>
+            <th>Brand</th>
+            <th>Azione</th>
+        </tr>
+        <tr th:each="abbigliamento : ${abbigliamento}">
+            <td th:text="${abbigliamento.id}"></td>
+            <td th:text="${abbigliamento.name}"></td>
+            <td th:text="${abbigliamento.tipologiaAbb}"></td>
+            <td th:text="${abbigliamento.brand}"></td> 
+            <td>
+                <a th:href="@{/abbigliamento/{id}/delete(id=${abbigliamento.id})}">Elimina</a>
+                <a th:href="@{/abbigliamento/{id}/modify(id=${abbigliamento.id})}">Modifica</a>
+            </td>
+        </tr>
+    </table>
+
+    <br><br><br>
+
+    <h2>Inserisci un Nuovo Capo di Abbigliamento</h2>
+    <form action="/abbigliamento/new" method="post">
+        Nome:
+        <input type="text" name="name" required>
+        <br><br>
+        Tipologia:
+        <input type="text" name="tipologiaAbb" required>
+        <br><br>
+        Brand:
+        <select name="brand" required>
+            <option value="" disabled selected>Seleziona un Brand</option>
+            <option th:each="brand : ${brand}" th:value="${brand.id}" th:text="${brand.name}"></option>
+        </select>
+
+       
+        <br><br>
+        <input type="submit" value="Invia">
+    </form>
+</body>
+</html>

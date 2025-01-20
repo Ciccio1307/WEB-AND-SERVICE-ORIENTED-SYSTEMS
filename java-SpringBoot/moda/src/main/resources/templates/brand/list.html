@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandList</title>
+</head>
+<body>
+
+   <center> <h1>Brand DB</h1></center>
+   <h2>BRAND LIST</h2>
+   <table border="1px">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Azione</th>
+
+    </tr>
+    <tr th:each="brand : ${brand}">
+        <td th:text="${brand.id}"></td>
+        <td th:text="${brand.name}"></td>
+
+<td>
+<a th:href="@{brand/{id}/delete(id=${brand.id})}">Elimina</a>
+<a th:href="@{brand/{id}/modify(id=${brand.id})}">Modifica</a>
+
+</td>
+
+    </tr>
+   </table>
+   <br> <br> <br> <br> <br> <br> <br> <br>
+
+   <h2>INSERISCI UN NUOVO BRAND</h2>
+   <form action="brand/new" method="post">
+Name:
+<input type="text" name="name" >
+
+ <br>
+ <br>
+ <input type="submit" value="Invia">
+   </form>
+
+</body>
+</html>

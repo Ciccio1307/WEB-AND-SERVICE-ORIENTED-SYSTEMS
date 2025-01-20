@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditBrand</title>
+</head>
+<body>
+    <center><h1>EDIT BRAND</h1></center>
+    <form action="/brand/new" method="post" th:object=""${brand}>
+Name : 
+<input type="text" name="name" >
+
+<input type="submit" value="Invia">
+
+    </form>
+</body>
+</html>
