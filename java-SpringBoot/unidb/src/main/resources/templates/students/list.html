@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ListStudents</title>
+</head>
+<body>
+    <h1><center>Students DB</center></h1>
+    
+    <h2>List of Students</h2>
+    <table border="1px">
+        <tr>
+            <th>Student name</th>
+            <th>Student ID</th>
+        <th>Student SUbject</th> 
+        <th>AZIONI</th>
+          </tr>
+          <tr th:each="students : ${students}">
+            <td th:text="${students.name}"></td>
+            <td th:text="${students.matricola}"></td>
+            <td th:text="${students.materie.name}"></td>
+            <td>
+                <a th:href="@{students/{id}/delete(id=${students.id})}">DELETE</a>
+                <a th:href="@{students/{id}/modify(id=${students.id})}">MODIFY</a>
+            </td>
+          </tr>
+    </table>
+    <h2>INSERT NEW STUDENT</h2>
+    <form action="/students/new" method="post">
+        Name : <input type="text" name="name" >
+        <br><br>
+        Matricola : <input type="text" name="matricola" >
+        <br><br>
+        Materia :
+        <select name="materie">
+            <option value="" disabled selected>SELEZIONA UNA MATERIA TRA QUELLE DISPONIBILI DEL CORSO</option>
+            <option  th:each="materie : ${materie} "  th:value="${materie.id}" th:text="${materie.name}"></option>
+        </select>
+        <BR><BR></BR></BR>
+        <input type="submit" value="Invia">
+    </form>
+    <br><br><br>
+
+
+
+<h2>FILTRA PER MATERIA DATA</h2>
+<form action="/students/search" method="post">
+    <select name="materieId">
+        <option  th:each="materie : ${materie} "  th:value="${materie.id}" th:text="${materie.name}"></option>
+    </select>
+    <input type="submit" value="CERCA">
+</form>
+
+
+
+
+
+    <a href="/students"> LISTA DEGLI STUDENTI</a>
+    <br><br>
+    <a href="/materie"> LISTA DELLE MATERIE</a>
+
+</body>
+</html>

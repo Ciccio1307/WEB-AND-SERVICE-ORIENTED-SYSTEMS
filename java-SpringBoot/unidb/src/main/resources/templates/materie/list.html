@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materie List</title>
+</head>
+<body>
+    <h1><center>MATERIE DB</center></h1>
+    
+
+    <H2>LISTA MATERIE</H2>
+
+    <table border="1px">
+        <tr>
+        <th>MATERIA</th>
+        <th>NOME MATERIA</th>
+            <th>CFU</th>
+            <th>AZIONI</th>
+    </tr>
+    <tr th:each="materie:${materie}">
+        <td th:text="${materie.id}"></td>
+        <td th:text="${materie.name}"></td>
+        <td th:text="${materie.cfu}"></td>
+
+        <td>
+
+            <form action="materie/delete" method="post">
+                <input type="hidden"  name ="id" th:value="${materie.id}">
+                <input type="submit" value="ELIMINA">
+            </form>
+            <form action="materie/modify" method="post">
+                <input type="hidden"  name ="id" th:value="${materie.id}">
+
+                <input type="submit" value="MODIFICA">
+            </form>
+        </td>
+
+    </tr>
+    </table>
+    <br><br><br>
+    <h2>TOTALE DEI CFU INSERITI  : </h2>
+    <span th:text="${count}"></span>
+    <br><br><br>
+    <H2>INSERISCI MATERIA</H2>
+
+    <form action="materie/new" method="post">
+        Nome Materie : <input type="text" name = "name">
+        <br><br>
+        CFU : <input type="text" name = "cfu">
+        <input type="submit" value="INVIA">
+        <br><br>
+    </form>
+
+
+    <a href="/students"> LISTA DEGLI STUDENTI</a>
+    <br><br>
+    <a href="/materie"> LISTA DELLE MATERIE</a>
+</body>
+</html>
