@@ -17,8 +17,7 @@ The course focuses on the following architectural paradigms and design patterns:
 
 The development technologies and tools demonstrated in this repository include:
 
-1. **C/Unix**: For foundational understanding of network programming and low-level operations.
-2. **Java**: For robust object-oriented programming and server-side development.
-3. **PHP**: For dynamic web applications and lightweight server-side scripting.
-4. **Frameworks**: Accompanying frameworks for Java and PHP to demonstrate advanced application development patterns.
+1. **Java**: For robust object-oriented programming and server-side development.
+2. **PHP**: For dynamic web applications and lightweight server-side scripting.
+3. **Frameworks**: Accompanying frameworks for Java and PHP to demonstrate advanced application development patterns.
 
