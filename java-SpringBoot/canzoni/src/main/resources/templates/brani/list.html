@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ListBrani</title>
+</head>
+<body>
+    <h1><center>BRANI DB</center></h1>
+
+    <H2>LIST OF BRANI</H2>
+    <table border="1px">
+        <tr>
+            <th>Nome</th>
+            <th>MINUTI CANZONE</th>
+            <th>ARTISTA</th>
+            <th>AZIONE</th>
+        </tr>
+        <tr th:if ="${brani.name=='Amore'}" style="background-color:powderblue;" th:each="brani : ${brani}">
+            <td th:text="${brani.name}"></td>
+            <td th:text="${brani.minutiCanzone}"></td>
+            <td th:text="${brani.artistiId.name}"></td>
+            <td>
+        <form action="brani/delete" method="post">
+        <input type="hidden" name="id" th:value="${brani.id}">
+        <input type="submit" value="ELIMINA">
+    </form>
+        <form action="brani/modify" method="post">
+        <input type="hidden" name="id" th:value="${brani.id}">
+        <input type="submit" value="MODIFICA">
+    </form>
+            </td>
+        </tr>
+
+        <tr th:unless ="${brani.name=='Amore'}" style="background-color:white;" th:each="brani : ${brani}">
+            <td th:text="${brani.name}"></td>
+            <td th:text="${brani.minutiCanzone}"></td>
+            <td th:text="${brani.artistiId.name}"></td>
+            <td>
+        <form action="brani/delete" method="post">
+        <input type="hidden" name="id" th:value="${brani.id}">
+        <input type="submit" value="ELIMINA">
+    </form>
+        <form action="brani/modify" method="post">
+        <input type="hidden" name="id" th:value="${brani.id}">
+        <input type="submit" value="MODIFICA">
+    </form>
+            </td>
+        </tr>
+
+    </table>
+
+    <br><br><br>
+
+    <h2>INSERISCI UN NUOVO BRANO </h2>
+
+
+    <form action="brani/new" method="post">
+
+        Name : <input type="text" name="name" >
+        <br><br>
+        Minutaggio Canzone : <input type="text" name="minutiCanzone" >
+<br><br>
+Artista : <select name="artistiId" >
+    <option th:each="artisti : ${artisti}" th:value="${artisti.id}" th:text="${artisti.name}"></option>
+</select>
+<br><br>
+<input type="submit" value="INVIA">
+    </form>
+
+    <h2>RICERCA BRANI DI UN ARTISTA  </h2>
+    <form action="/brani/search" method="post">
+        <span>Inserisci l'artista da ricercare</span>
+        <select name="artistiId" >
+    <option th:each="artisti : ${artisti}" th:value="${artisti.id}" th:text="${artisti.name}"></option>
+
+    <input type="submit" value="CERCA">
+
+</select>
+    </form>
+
+
+    <br><br><br><br><br>
+    <span>VAI ALLA LISTA DEGLI ARTISTI : </span> <a href="/artisti">link</a>
+    <br><br><br>
+    <span>VAI ALLA LISTA DEI BRANI : </span> <a href="/brani">link</a>
+</body>
+</html>

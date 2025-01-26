@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdiIscritti</title>
+</head>
+<body>
+    <h1><center>EDIT PALESTRA</center></h1>
+    <H2>MODIFICA I CAMPI DELL ISCRITTI</H2>
+    <form action="/iscritti/new" method="post" th:object="${iscritti}">
+                    <input type="hidden" name="id" th:value="${iscritti.id}">
+
+        Nome : <input type="text" name="name" th:value="${iscritti.name}">
+        <br><br><br>
+                Eta : <input type="text" name="age" th:value="${iscritti.age}">
+                <br><br><br>
+                 Peso : <input type="text" name="weight" th:value="${iscritti.weight}">
+                <br><br><br>
+
+                Palestra : 
+                   <select name="palestraId" >
+            <option th:each="palestra : ${palestra}"  th:value="${palestra.id}" th:text="${palestra.name}"></option>
+        </select>
+<input type="submit" value="MODIFICA">
+    </form>
+</body>
+</html>

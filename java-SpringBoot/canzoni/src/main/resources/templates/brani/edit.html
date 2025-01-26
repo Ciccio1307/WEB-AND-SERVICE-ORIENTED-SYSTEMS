@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditBrani</title>
+</head>
+<body>
+    <H1><center>EDIT BRANI</center></H1>
+    <H2>MODIFICA I SEGUENTI CAMPI</H2>
+    <br><br>
+        <form action="/brani/new" method="post" th:object="${brani}">
+        <input type="hidden" name="id" th:value="${brani.id}">
+        Name : <input type="text" name="name" th:value="${brani.name}">
+        <br><br>
+        Minutaggio Canzone : <input type="text" name="minutiCanzone"  th:value="${brani.minutiCanzone}">
+<br><br>
+Artista : <select name="artistiId" >
+    <option th:each="artisti : ${artisti}" th:value="${artisti.id}" th:text="${artisti.name}"></option>
+</select>
+<br><br>
+<input type="submit" value="UPDATE">
+    </form>
+
+    <br><br><br><br><br>
+    <span>VAI ALLA LISTA DEGLI ARTISTI : </span> <a href="/artisti">link</a>
+    <br><br><br>
+    <span>VAI ALLA LISTA DEI BRANI : </span> <a href="/brani">link</a>
+</body>
+</html>

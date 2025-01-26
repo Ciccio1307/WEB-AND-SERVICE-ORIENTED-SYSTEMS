@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center><h1>ARTISTI LIST</h1></center>
+    <br><br><br>
+    <h2>Artisti LIST</h2>
+    <table border="1px">
+        <tr>
+        <th>Nome</th>
+        <th>Numero di Album</th>
+        <th>Azioni</th>
+</tr>
+<tr th:each ="artisti:${artisti}">
+<td th:text="${artisti.name}"></td>
+<td th:text="${artisti.numeroalbum}"></td>
+<td>
+    <form action="artisti/delete" method="post">
+        <input type="hidden" name="id" th:value="${artisti.id}">
+        <input type="submit" value="ELIMINA">
+    </form>
+        <form action="artisti/modify" method="post">
+        <input type="hidden" name="id" th:value="${artisti.id}">
+        <input type="submit" value="MODIFICA">
+    </form>
+</td>
+</tr>
+
+    </table>
+    
+<br><br><br>
+        <h2>INSERISCI UN NUOVO ARTISTA</h2>
+        <form action="artisti/new" method="post">
+
+            Name : <input type="text" name="name" >
+            <br> <br>
+             Numero di Album : <input type="text" name="numeroalbum" >
+            <br> <br>
+        <input type="submit" value="INVIA">
+
+        </form>
+
+
+        
+
+    <br><br><br><br><br>
+    <span>VAI ALLA LISTA DEGLI ARTISTI : </span> <a href="/artisti">link</a>
+    <br><br><br>
+    <span>VAI ALLA LISTA DEI BRANI : </span> <a href="/brani">link</a>
+</body>
+</html>

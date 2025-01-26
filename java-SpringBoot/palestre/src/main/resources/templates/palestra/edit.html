@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditPalestra</title>
+</head>
+<body>
+    <h1><center>EDIT PALESTRA</center></h1>
+    <H2>MODIFICA I CAMPI DELLA PALESTRA</H2>
+    <form action="/palestra/new" method="post" th:object="${palestra}">
+
+        Nome : <input type="text" name="name" th:value="${palestra.name}">
+        <br><br><br>
+                Indirizzo : <input type="text" name="address" th:value="${palestra.address}">
+                <br><br><br>
+<input type="submit" value="MODIFICA">
+    </form>
+</body>
+</html>

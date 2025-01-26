@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditArtisti</title>
+</head>
+<body>
+    <h1><center>EDIT DI ARTISTI</center></h1>
+
+    <H2>MODIFICA I CAMPI</H2>
+
+     <form action="/artisti/new"  method="post" th:object="${artisti}">
+        <input type="hidden" name="id" th:value="${artisti.id}">
+
+            Name : <input type="text" name="name" th:value="${artisti.name}">
+            <br> <br>
+             Numero di Album : <input type="text" name="numeroalbum" th:value="${artisti.numeroalbum}">
+            <br> <br>
+        <input type="submit" value="MODIFICA">
+
+        </form>
+
+    <br><br><br><br><br>
+    <span>VAI ALLA LISTA DEGLI ARTISTI : </span> <a href="/artisti">link</a>
+    <br><br><br>
+    <span>VAI ALLA LISTA DEI BRANI : </span> <a href="/brani">link</a>
+</body>
+</html>

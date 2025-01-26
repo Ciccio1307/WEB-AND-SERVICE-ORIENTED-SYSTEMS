@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ListIscritti</title>
+</head>
+<body>
+    <h1><center>ISCRITTI DB</center></h1>
+
+    <H2>LISTA DI ISCRITTI NEL TUO DB</H2>
+
+    <table border="1px">
+        <tr>
+            <th>Nome</th>
+            <th>Eta</th>
+            <th>Peso</th>
+            <th>Palestra</th>
+            <th>Azione</th>
+        </tr>
+        <tr th:each="iscritti : ${iscritti}">
+            <td th:text="${iscritti.name}"></td>
+            <td th:text="${iscritti.age}"></td>
+            <td th:text="${iscritti.weight}"></td>
+            <td th:text="${iscritti.palestraId.name}"></td>
+            <td>
+                    <form action="iscritti/delete" method="post">
+                    <input type="hidden" name="id" th:value="${iscritti.id}">
+                    <input type="submit" value="Elimina">
+                </form>
+                 <form action="iscritti/modify" method="post">
+                    <input type="hidden" name="id" th:value="${iscritti.id}">
+                    <input type="submit" value="Modifica">
+                </form>
+            </td>
+        </tr>
+    </table>
+    
+    <h2>INSERT NEW ISCRITTI</h2>
+    <form action="iscritti/new" method="post">
+        Nome : <input type="text" name="name" >
+        <br><br>
+  Eta : <input type="text" name="age" >
+        <br><br>
+          Peso : <input type="text" name="weight" >
+        <br><br>
+        Palestra :
+        <select name="palestraId" >
+            <option th:each="palestra : ${palestra}"  th:value="${palestra.id}" th:text="${palestra.name}"></option>
+        </select>
+<br><br><br>
+<input type="submit" value="Invia">
+
+    </form>
+
+
+
+        <h2>RICERCA PER PALESTRA</h2>
+        <form action="/iscritti/search" method="post">
+            <select name="palestraId" >
+    <option th:each="palestra : ${palestra}"  th:value="${palestra.id}" th:text="${palestra.name}"></option>
+        </select>
+<br><br><br>
+<input type="submit" value="CERCA">
+            </select>
+
+        </form>
+
+</body>
+</html>

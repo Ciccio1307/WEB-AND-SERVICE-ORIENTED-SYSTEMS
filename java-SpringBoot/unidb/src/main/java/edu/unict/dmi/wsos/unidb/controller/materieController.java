@@ -52,4 +52,17 @@ public class materieController {
         return ("materie/edit");
     }
 
+    @PostMapping("/materie/setcfu")
+    public String setCfu(Model model) {
+        // model.addAttribute("materie", repo.findAll());
+        List<materie> all_materie = repo.findAll();
+        for (materie elem : all_materie) {
+            if (elem.getCfu() < 6) {
+                elem.setCfu(6);
+                repo.save(elem);
+            }
+        }
+
+        return ("redirect:/materie");
+    }
 }

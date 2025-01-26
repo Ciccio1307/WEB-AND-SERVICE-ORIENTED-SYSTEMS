@@ -13,16 +13,25 @@
         <tr>
             <th>Student name</th>
             <th>Student ID</th>
-        <th>Student SUbject</th> 
+        <th>Student Subject</th> 
         <th>AZIONI</th>
           </tr>
-          <tr th:each="students : ${students}">
-            <td th:text="${students.name}"></td>
-            <td th:text="${students.matricola}"></td>
-            <td th:text="${students.materie.name}"></td>
+          <tr th:each="student : ${students}" th:if="${student.materie.name == 'WSOS'}" style="background-color: red; color: white;">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.matricola}"></td>
+            <td th:text="${student.materie.name}"></td>
             <td>
-                <a th:href="@{students/{id}/delete(id=${students.id})}">DELETE</a>
-                <a th:href="@{students/{id}/modify(id=${students.id})}">MODIFY</a>
+                <a th:href="@{students/{id}/delete(id=${student.id})}">DELETE</a>
+                <a th:href="@{students/{id}/modify(id=${student.id})}">MODIFY</a>
+            </td>
+          </tr>
+          <tr th:each="student : ${students}" th:unless="${student.materie.name == 'WSOS'}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.matricola}"></td>
+            <td th:text="${student.materie.name}"></td>
+            <td>
+                <a th:href="@{students/{id}/delete(id=${student.id})}">DELETE</a>
+                <a th:href="@{students/{id}/modify(id=${student.id})}">MODIFY</a>
             </td>
           </tr>
     </table>

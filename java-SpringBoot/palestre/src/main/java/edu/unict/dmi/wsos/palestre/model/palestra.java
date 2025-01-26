@@ -1,4 +1,4 @@
-package edu.unict.dmi.wsos.unidb.model;
+package edu.unict.dmi.wsos.palestre.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,26 +11,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class materie {
-
+public class palestra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
 
-    public materie(Long id, String name, int cfu) {
+    public palestra(Long id, String name, String address) {
         this.id = id;
         this.name = name;
-        this.cfu = cfu;
+        this.address = address;
     }
 
-    @OneToMany(mappedBy = "materie", cascade = CascadeType.REMOVE)
-    private List<students> students = new ArrayList<>();
-
-    public materie() {
+    public palestra() {
     }
-
-    int cfu;
 
     public Long getId() {
         return id;
@@ -48,12 +42,15 @@ public class materie {
         this.name = name;
     }
 
-    public int getCfu() {
-        return cfu;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCfu(int cfu) {
-        this.cfu = cfu;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
+    String address;
+    @OneToMany(mappedBy = "palestraId", cascade = CascadeType.REMOVE)
+    private List<iscritti> iscritti = new ArrayList<>();
 }
