@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ListStudenti</title>
+  </head>
+  <body>
+    <h1><center>STUDENTI DB</center></h1>
+
+    <h2>LISTA DEI STUDENTI NEL DATABASE</h2>
+
+    <table border="1px">
+      <tr>
+        <th>Nominativo</th>
+        <th>Eta'</th>
+        <th>Classe</th>
+        <th>Azione</th>
+      </tr>
+      <tr th:each="studenti : ${studenti}">
+        <td th:text="${studenti.name}"></td>
+        <td th:text="${studenti.eta}"></td>
+        <td
+          th:text="${studenti.classiId.anno} + ${studenti.classiId.sezione} "
+        ></td>
+        <td>
+          <form action="/studenti/delete" method="post">
+            <input type="hidden" name="id" th:value="${studenti.id}" />
+            <input type="submit" value="ELIMINA" />
+          </form>
+          <form action="/studenti/modify" method="post">
+            <input type="hidden" name="id" th:value="${studenti.id}" />
+            <input type="submit" value="MODIFICA" />
+          </form>
+        </td>
+      </tr>
+    </table>
+    <br /><br /><br />
+
+    <h2>INSERISCI UN NUOVO STUDENTE</h2>
+    <form action="/studenti/new" method="post">
+      <span>Nominativo : </span>
+      <input type="text" name="name" />
+      <br /><br /><br />
+      <span>Eta' : </span>
+      <input type="number" name="eta" />
+      <br /><br /><br />
+      <span>Classe :</span>
+      <select name="classiId">
+        <option
+          th:each="classi : ${classi}"
+          th:value="${classi.id}"
+          th:text="${classi.anno} +  ${classi.sezione} "
+        ></option>
+      </select>
+
+      <input type="submit" value="INVIA" />
+    </form>
+
+    <h3>Filtra per classe</h3>
+
+    <form action="/studenti/findByClass" method="post">
+      <span>Cerca per classe :</span>
+      <select name="classiId">
+        <option
+          th:each="classi : ${classi}"
+          th:value="${classi.id}"
+          th:text="${classi.anno} +  ${classi.sezione} "
+        ></option>
+        <input type="submit" value="Cerca" />
+      </select>
+    </form>
+  </body>
+</html>

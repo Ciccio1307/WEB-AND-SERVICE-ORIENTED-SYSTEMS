@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditStudenti</title>
+</head>
+<body>
+    <h1><center>EDIT STUDENTI</center></h1>
+    <h2>MODIFICA  STUDENTE</h2>
+    <form action="/studenti/new" method="post" th:object="${studenti}">
+        <input type="hidden" name="id" th:value="${studenti.id}">
+
+        <span>Nominativo : </span>
+        <input type="text" name="name" th:value="${studenti.name}">
+        <br><br><br>
+        <span>Eta' : </span>
+        <input type="number" name="eta"  th:value="${studenti.eta}">
+        <br><br><br>
+        <span>Classe :</span>
+        <select name="classiId" >
+
+            <option th:each="classi : ${classi}" th:value="${classi.id}" th:text="${classi.anno} + ${classi.sezione} "></option>
+
+        </select>
+
+        <input type="submit" value="UPDATE">
+
+    </form>
+</body>
+</html>

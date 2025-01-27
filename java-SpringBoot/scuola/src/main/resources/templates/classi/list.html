@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIstClassi</title>
+</head>
+<body>
+    <center>
+    <h1>CLASSI DB</h1>
+</center>
+
+<h2>LISTA DELLE CLASSI NEL DATABASE</h2>
+
+<table border="1px">
+<tr>
+    <th>ANNO</th>
+    <th>SEZIONE</th>
+    <th>AZIONE</th>
+</tr>
+<tr th:each="classi : ${classi}">
+    <td th:text="${classi.anno}"></td>
+    <td th:text="${classi.sezione}"></td>
+    <td>
+        <form action="/classi/delete" method="post">
+            <input type="hidden" name="id" th:value="${classi.id}">
+            <input type="submit" value="ELIMINA">
+        </form>
+        <form action="/classi/modify" method="post">
+            <input type="hidden" name="id" th:value="${classi.id}">
+            <input type="submit" value="MODIFICA">
+        </form>
+
+    </td>
+
+</tr>
+
+
+</table>
+
+<H2>INSERISCI UNA NUOVA CLASSE</H2>
+<form action="/classi/new" method="post">
+    <span>Anno classe : </span>
+<input type="number" name="anno" >
+<br><br><br>
+<span>Sezione classe : </span>
+<input type="text" name="sezione" >
+<br><br><br>
+<input type="submit" value="INVIA">
+</form>
+</body>
+</html>
