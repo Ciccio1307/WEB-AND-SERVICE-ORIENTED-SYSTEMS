@@ -49,6 +49,10 @@
 
     </table>
     <br><br><br><br><br><br>
+    <h3>INSERISCI UN NUOVO GIOCATORE
+
+    </h3>
+
     <form action="/players" method="post">
         @csrf
         Nominativo : <input type="text" name="name">
@@ -81,12 +85,27 @@
     <a href="/players"> link </a>
     <br><br><br>
 
-    Ordina i teams in base al punteggio <a href="/team/order">link </a>
-    <br><br><br>
-    Elimina le squadre con punteggio minore di 1000 <a href="/team/deletePoint">link </a>
-    <br><br><br>
-    VISUALIZZA le squadre con punteggio superiore di 1000 <a href="/team/filterPoint">link </a>
-    <br><br><br>
+    <h3>Visualizza giocatori con fantamedia superiore a: </h3>
+    <form action="/players/greaterThanFantamedia" method="post">
+        @csrf
+        <input type="number" name="fantamedia" value="1">
+        <button>Invia</button>
+    </form>
+    <br><br><br><br>
+
+    <h3>Visualizza giocatori per team</h3>
+    <form action="/players/findByTeam" method="post">
+        @csrf
+        <span>Seleziona Team: </span>
+        <select name="team_id">
+            @foreach ($team as $item)
+                <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
+        </select>
+        <button>Invia</button>
+    </form>
+
+
 </body>
 
 

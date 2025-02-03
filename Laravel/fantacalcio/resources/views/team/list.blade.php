@@ -56,6 +56,16 @@
     <br><br><br>
     <span>ECCO A TE LA LISTA DEI CALCIATORI </span>
     <a href="/players"> link </a>
+    <br><br><br>
+
+    Ordina i teams in base al punteggio <a href="/teams/order">link </a>
+    <br><br><br>
+
+    <br><br><br>
+    Elimina le squadre con punteggio minore di 1000 <a href="/teams/deletePoint">link </a>
+    <br><br><br>
+    VISUALIZZA le squadre con punteggio superiore di 1000 <a href="/teams/filterPoint">link </a>
+    <br><br><br>
 </body>
 
 </html>
