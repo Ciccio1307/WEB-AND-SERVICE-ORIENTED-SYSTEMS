@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1><center>COMPAGNIE AEREE DB</center></h1>
+
+    <h2>MODIFICA O INSERISCI I VALORI NEI SEGUENTI CAMPI</h2>
+    <form
+      th:action="@{/compagnie}"
+      method="post"
+      th:object="${compagnie_aeree}"
+    >
+      <input type="hidden" name="id" th:field="*{id}" />
+      <span>DESCRIZIONE</span>
+      <input type="text" name="description" th:field="*{description}" />
+      <br /><br /><br />
+      <span>LINK</span>
+      <input type="text" name="link" th:field="*{link}" />
+      <br /><br /><br />
+      <input type="submit" value="INVIA" />
+    </form>
+  </body>
+</html>

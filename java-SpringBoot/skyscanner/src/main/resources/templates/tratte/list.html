@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tratte</title>
+  </head>
+  <body>
+    <h1><center>TRATTE DB</center></h1>
+
+    <h2>ECCO A TE LA LISTA DELLE TRATTE INSERITE NEL DATABASE</h2>
+
+    <table border="15px">
+      <tr>
+        <th>ID</th>
+        <th>Aereoporto Origine</th>
+        <th>Aereoporto Destinazione</th>
+        <th>Distanza</th>
+        <th>Identificativo Compagnia</th>
+        <th>AZIONI</th>
+      </tr>
+      <tr th:each="tratte : ${tratte}">
+        <td th:text="${tratte.id}"></td>
+        <td th:text="${tratte.aereoporto_origine}"></td>
+        <td th:text="${tratte.destinazione}"></td>
+        <td th:text="${tratte.distanza}"></td>
+        <td th:text="${tratte.compagnieAereeId.description}"></td>
+        <td>
+          <a th:href="@{tratte/{id}/edit(id=${tratte.id})}">MODIFICA</a>
+          <a th:href="@{tratte/{id}/delete(id=${tratte.id})}">ELIMINA</a>
+        </td>
+      </tr>
+    </table>
+    HAI INSERITO
+    <span th:text="${#lists.size(tratte)}"> </span>
+    TRATTE
+    <br /><br /><br /><br />
+    <span>RICERCA PER TRATTA</span>
+    <form action="/tratte/findByAereoporto_destinazione" method="post">
+      <select name="destinazione">
+        <option
+          th:each="tratte : ${tratte}"
+          th:text="${tratte.destinazione}"
+          th:value="${tratte.destinazione}"
+        ></option>
+      </select>
+      <input type="submit" value="RICERCA" />
+    </form>
+
+    <br /><br /><br />
+    <a th:href="@{/tratte/new}">INSERISCI UNA TRATTA </a>
+    <br /><br /><br />
+    <span>LINK ALLE SEGUENTI LISTE</span>
+    <br /><br /><br />
+    <span>Compagnie Aeree</span>
+    <a href="/compagnie">link</a>
+    <br /><br /><br />
+    <span>Tratte</span>
+    <a href="/tratte">link</a>
+    <br /><br /><br />
+  </body>
+</html>

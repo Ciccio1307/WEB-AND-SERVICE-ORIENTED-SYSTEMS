@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tratte</title>
+  </head>
+  <body>
+    <h1><center>TRATTE DB</center></h1>
+    <h2>MODIFICA O INSERISCI I VALORI NEI SEGUENTI CAMPI</h2>
+    <form th:action="@{/tratte}" method="post" th:object="${tratte}">
+      <input type="hidden" name="id" th:field="*{id}" />
+      <span>AEREOPORTO ORIGINE</span>
+      <input
+        type="text"
+        name="aereoporto_origine"
+        th:field="*{aereoporto_origine}"
+      />
+      <br /><br /><br />
+      <span>AEREOPORTO DESTINAZIONE</span>
+      <input type="text" name="destinazione" th:field="*{destinazione}" />
+      <br /><br /><br />
+      <span>DISTANZA</span>
+      <input type="number" name="distanza" th:field="*{distanza}" />
+      <br /><br /><br />
+      <select name="compagnieAereeId">
+        <option
+          th:each="compagnie_aeree : ${compagnie_aeree}"
+          th:value="${compagnie_aeree.id}"
+          th:text="${compagnie_aeree.description}"
+        ></option>
+      </select>
+      <input type="submit" value="INVIA" />
+    </form>
+  </body>
+</html>

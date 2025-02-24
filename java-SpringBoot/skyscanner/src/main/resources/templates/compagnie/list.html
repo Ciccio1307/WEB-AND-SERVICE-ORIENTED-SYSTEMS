@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compagnie</title>
+  </head>
+  <body>
+    <h1><center>COMPAGNIE AEREE DB</center></h1>
+
+    <h2>ECCO LA LISTA DELLE COMPAGNIE AEREE</h2>
+    <table border="15">
+      <tr>
+        <th>ID</th>
+        <th>DESCRIZIONE COMPAGNIA</th>
+        <th>LINK COMPAGNIA</th>
+        <th>AZIONI</th>
+      </tr>
+      <tr th:each="compagnie_aeree : ${compagnie_aeree}">
+        <td th:text="${compagnie_aeree.id}"></td>
+        <td th:text="${compagnie_aeree.description}"></td>
+        <td th:text="${compagnie_aeree.link}"></td>
+        <td>
+          <a th:href="@{compagnie/{id}/edit(id=${compagnie_aeree.id})}"
+            >MODIFICA</a
+          >
+          <a th:href="@{compagnie/{id}/delete(id=${compagnie_aeree.id})}"
+            >ELIMINA</a
+          >
+          <a
+            th:href="@{compagnie/{id}/filterByCOmpagnieAeree(id=${compagnie_aeree.id})}"
+            >FILTRA</a
+          >
+        </td>
+      </tr>
+    </table>
+    <br /><br /><br /><br />
+    <a th:href="@{/compagnie/new}">INSERISCI UNA NUOVA COMPAGNIA AEREA</a>
+    <br /><br /><br />
+    <span>LINK ALLE SEGUENTI LISTE</span>
+    <br /><br /><br />
+    <span>Compagnie Aeree</span>
+    <a href="/compagnie">link</a>
+    <br /><br /><br />
+    <span>Tratte</span>
+    <a href="/tratte">link</a>
+    <br /><br /><br />
+  </body>
+</html>
