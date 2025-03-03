@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studenti DB</title>
+  </head>
+  <body>
+    <h1><center>STUDENT DB</center></h1>
+    <h2>INSERISCI UN NUOVO STUDENTE</h2>
+    <form th:action="@{/studenti}" method="post" th:object="${studenti}">
+      <span>MATRICOLA</span>
+      <input type="hidden" name="id" th:field="*{id}" />
+      <input type="text" name="matricola" th:field="*{matricola}" />
+      <br /><br /><br />
+      <span>NOMINATIVO</span>
+      <input type="text" name="nominativo" th:field="*{nominativo}" />
+      <br /><br />
+      <input type="submit" value="INVIA" />
+      <br /><br /><br />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studenti DB</title>
+  </head>
+  <body>
+    <h1><center>STUDENT DB</center></h1>
+
+    <h2>ECCO LA LISTA DEGLI STUDENTI INSERITI NEL DATABASE</h2>
+    <table border="15px">
+      <tr>
+        <th>MATRICOLA</th>
+        <th>NOMINATIV</th>
+        <th>AZIONI</th>
+      </tr>
+      <tr th:each="studenti : ${studenti}">
+        <td th:text="${studenti.matricola}"></td>
+        <td th:text="${studenti.nominativo}"></td>
+        <td>
+          <a th:href="@{studenti/{id}/edit(id=${studenti.id})}">MODIFICA</a>
+          <a th:href="@{studenti/{id}/delete(id=${studenti.id})}">ELIMINA</a>
+        </td>
+      </tr>
+    </table>
+    <br /><br /><br />
+    <a th:href="@{/studenti/new}">INSERISCI UN NUOVO STUDENTE NEL DATABASE</a>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YOUTUBE VIDEO</title>
+  </head>
+  <body>
+    <h1><center>YOUTUBE VIDEO DB</center></h1>
+
+    <h2>INSERISCI O MODIFICA I SEGUENTI CAMPI</h2>
+    <form th:action="@{/video}" method="post" th:object="${video}">
+      <span>NOME DEL VIDEO</span>
+      <input type="hidden" name="id" th:field="*{id}" />
+      <input type="text" name="name" th:field="*{name}" />
+      <br /><br /><br />
+      <span>GENERE DEL VIDEO</span>
+      <select name="genreId">
+        <option
+          th:each="genre : ${genre}"
+          th:text="${genre.name}"
+          th:value="${genre.id}"
+        ></option>
+      </select>
+      <input type="submit" value="INVIA" />
+    </form>
+    <span>GENRE</span>
+    <a href="/genre">link</a>
+    <br /><br /><br />
+
+    <span>VIDEO</span>
+    <a href="/video">link</a>
+    <br /><br /><br />
+  </body>
+</html>

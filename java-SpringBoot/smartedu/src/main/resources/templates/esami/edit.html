@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esami</title>
+  </head>
+  <body>
+    <h1><center>ESAMI DB</center></h1>
+
+    <h2>INSERISCI UN NUOVO ESAME</h2>
+    <form th:action="@{/esami}" method="post" th:object="${esami}">
+      <span>NOME ESAME</span>
+      <input type="hidden" name="id" th:field="*{id}" />
+      <input type="text" name="nome" th:field="*{nome}" />
+      <br /><br /><br />
+      <span>CFU</span>
+      <input type="number" name="cfu" th:field="*{cfu}" />
+      <br /><br />
+      <span>STUDENTE SELEZIONATO</span>
+      <select name="studentiId" th:field="*{studentiId}">
+        <option
+          th:each="studenti : ${studenti}"
+          th:text="${studenti.nominativo}"
+          th:value="${studenti.id}"
+        ></option>
+      </select>
+      <br /><br />
+      <input type="submit" value="INVIA" />
+      <br /><br /><br />
+    </form>
+  </body>
+</html>

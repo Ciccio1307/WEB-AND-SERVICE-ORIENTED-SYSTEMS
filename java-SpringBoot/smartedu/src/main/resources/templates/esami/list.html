@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esami</title>
+  </head>
+  <body>
+    <h1><center>ESAMI DB</center></h1>
+
+    <h2>ECCO LA LISTA DEGLI ESAMI REGISTRATI INSERITI NEL DATABASE</h2>
+    <table border="15px">
+      <tr>
+        <th>NOME ESAME</th>
+        <th>CFU ESAME</th>
+        <th>STUDENTE CHE HA PROVATO ESAME</th>
+        <th>AZIONI</th>
+      </tr>
+      <tr th:each="esami : ${esami}">
+        <td th:text="${esami.nome}"></td>
+        <td th:text="${esami.cfu}"></td>
+        <td th:text="${esami.studentiId.nominativo}"></td>
+        <td>
+          <a th:href="@{esami/{id}/edit(id=${esami.id})}">MODIFICA</a>
+          <a th:href="@{esami/{id}/delete(id=${esami.id})}">ELIMINA</a>
+        </td>
+      </tr>
+    </table>
+    <br /><br /><br />
+    <a th:href="@{/esami/new}">INSERISCI UN NUOVO ESAME NEL DATABASE</a>
+  </body>
+</html>

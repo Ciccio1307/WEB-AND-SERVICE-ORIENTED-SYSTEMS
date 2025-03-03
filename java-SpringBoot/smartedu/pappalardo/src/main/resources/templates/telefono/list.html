@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TELEFONO</title>
+  </head>
+  <body>
+    <h1><center>TELEFONO DB</center></h1>
+
+    <h2>ECCO LA RUBRICA DEI CONTATTI DI PAPPALARDO</h2>
+
+    <table border="15 px">
+      <tr>
+        <th>Nominativo</th>
+        <th>NUMERO DI TELEFONO</th>
+        <th>AZIONI</th>
+      </tr>
+      <tr th:each="telefono : ${telefono}">
+        <td th:text="${telefono.nominativo}"></td>
+        <td th:text="${telefono.numeroTelefono}"></td>
+        <td>
+          <a th:href="@{/telefono/{id}/edit(id=${telefono.id})}">MODIFICA</a>
+          <a th:href="@{/telefono/{id}/delete(id=${telefono.id})}">ELIMINA</a>
+        </td>
+      </tr>
+    </table>
+
+    <br /><br /><br />
+    <a th:href="@{/telefono/new}"
+      >INSERISCI UN NUOVO CONTATTO DA INSERIRE ALLA RUBRICA</a
+    >
+  </body>
+</html>

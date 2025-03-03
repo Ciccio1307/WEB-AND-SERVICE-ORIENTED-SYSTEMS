@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YOUTUBE VIDEO</title>
+  </head>
+  <body>
+    <h1><center>YOUTUBE VIDEO DB</center></h1>
+
+    <h2>ECCO LA LISTA DEI VIDEO INSERITI NEL DATABASE</h2>
+
+    <table border="44px">
+      <tr>
+        <th>NOME DEL VIDEO</th>
+        <th>GENERE DEL VIDEO</th>
+        <th>AZIONE</th>
+      </tr>
+      <tr th:each="video : ${video}">
+        <td th:text="${video.name}"></td>
+        <td th:text="${video.genreId.name}"></td>
+        <td>
+          <a th:href="@{/video/{id}/edit(id=${video.id})}">MODIFICA</a>
+          <a th:href="@{/video/{id}/delete(id=${video.id})}">ELIMINA</a>
+        </td>
+      </tr>
+    </table>
+    <br /><br /><br />
+    <a th:href="@{/video/new}">INSERISCI UN NUOVO VIDEO</a>
+    <br /><br /><br />
+    <span>GENRE</span>
+    <a href="/genre">link</a>
+    <br /><br /><br />
+
+    <span>VIDEO</span>
+    <a href="/video">link</a>
+    <br /><br /><br />
+  </body>
+</html>

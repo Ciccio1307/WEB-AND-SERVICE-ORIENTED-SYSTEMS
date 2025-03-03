@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GENRE</title>
+  </head>
+  <body>
+    <h1><center>GENRE DB</center></h1>
+
+    <h2>LISTA DEI GENERI</h2>
+    <table border="15px">
+      <tr>
+        <th>ID</th>
+        <th>Descrizione</th>
+        <th>AZIONE</th>
+      </tr>
+      <tr th:each="genre : ${genre}">
+        <td th:text="${genre.id}"></td>
+        <td th:text="${genre.name}"></td>
+        <td>
+          <a th:href="@{genre/{id}/edit(id=${genre.id})}">MODIFICA</a>
+          <a th:href="@{genre/{id}/delete(id=${genre.id})}">ELIMINA</a>
+        </td>
+      </tr>
+    </table>
+
+    <br /><br /><br />
+    <a th:href="@{/genre/new}">INSERISCI UN NUOVO GENRE</a>
+  </body>
+</html>

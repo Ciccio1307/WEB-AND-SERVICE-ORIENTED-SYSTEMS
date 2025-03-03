@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHIAMATA</title>
+  </head>
+  <body>
+    <h1><center>CHIAMATA DB</center></h1>
+
+    <h2>ECCO LA LISTA DELLE CHIAMATE DEL PROF PAPPALARDO</h2>
+    <table border="15px">
+      <tr>
+        <th>NOMINATIVO</th>
+        <th>TELEFONO</th>
+        <th>DURATA</th>
+        <th>A LEZIONE ?</th>
+        <th>AZIONI</th>
+      </tr>
+
+      <tr th:each="chiamata : ${chiamata}">
+        <td th:text="${chiamata.telefonoId.nominativo}"></td>
+        <td th:text="${chiamata.telefonoId.numeroTelefono}"></td>
+        <td th:text="${chiamata.durata}"></td>
+        <td th:text="${chiamata.durata >20 ? 'si' : 'no'}"></td>
+        <td>
+          <a th:href="@{/chiamata/{id}/edit(id=${chiamata.id})}">MODIFICA</a>
+          <a th:href="@{/chiamata/{id}/delete(id=${chiamata.id})}">ELIMINA</a>
+        </td>
+      </tr>
+    </table>
+    <span>HAI TELEFONATO </span><span th:text="${#lists.size(chiamata)}"></span>
+    <span>VOLTE</span>
+    <br /><br /><br />
+    <span>MINUTI DI TUTTE LE CHIAMATE </spanT
+    ><span th:text="${totaleMinuti}"></span> <br /><br /><br />
+    <a th:href="@{/chiamata/new}">INSERISCI UNA NUOVA CHIAMATA DA INSERIRE </a>
+    <br><br><br>
+    RICERCA TRA LE CHIAMATE DI PAPPALARDO
+    <form th:action="@{/chiamata/filterByTelefono}" method="post" >
+      <select name="id">
+        <option
+          th:each="telefono : ${telefono}"
+          th:text="${telefono.nominativo} +-----+  ${telefono.numeroTelefono}"
+          th:value="${telefono.id}"
+        ></option>
+
+        <input type="submit" value="INVIA ">
+        <br><br><br>
+    </form>
+
+    <a th:href="@{/chiamata/addTenMinutes}">AGGIUNGI 10 MINUTI ALLA DURATA DELLE CHIAMATE</a>
+  </body>
+</html>

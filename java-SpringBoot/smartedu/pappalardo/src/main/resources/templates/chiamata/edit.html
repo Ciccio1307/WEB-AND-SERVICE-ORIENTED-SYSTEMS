@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHIAMATA</title>
+  </head>
+  <body>
+    <h1><center>CHIAMATA DB</center></h1>
+
+    <h2>CAMPI DA INSERIRE O MODIFICA DI UNA CHIAMATA</h2>
+    <form th:action="@{/chiamata}" method="post" th:object="${chiamata}">
+      <input type="hidden" name="id" th:field="*{id}" />
+      <span>CHI HA CHIAMATO PAPPALARDO?</span>
+      <select name="telefonoId">
+        <option
+          th:each="telefono : ${telefono}"
+          th:text="${telefono.nominativo} +-----+  ${telefono.numeroTelefono}"
+          th:value="${telefono.id}"
+        ></option>
+      </select>
+      <br /><br /><br />
+      <span>DURATA CHIAMATA</span>
+      <input type="number" name="durata" th:field="*{durata}" />
+
+      <br /><br /><br />
+      <input type="submit" value="INVIA" />
+    </form>
+  </body>
+</html>

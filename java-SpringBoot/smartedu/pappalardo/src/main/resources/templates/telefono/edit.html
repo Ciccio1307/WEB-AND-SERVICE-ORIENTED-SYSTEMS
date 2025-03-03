@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TELEFONO</title>
+  </head>
+  <body>
+    <h1><center>TELEFONO DB</center></h1>
+    <h2>CAMPI DA INSERIRE O MODIFICA DI UN CONTATTO</h2>
+    <form th:action="@{/telefono}" method="post" th:object="${telefono}">
+      <input type="hidden" name="id" th:field="*{id}" />
+      <span>NOMINATIVO</span>
+      <input type="text" name="nominativo" th:field="*{nominativo}" />
+      <br /><br /><br />
+      <span>NUMERO DI TELEFONO</span>
+      <input type="text" name="numeroTelefono" th:field="*{numeroTelefono}" />
+      <br /><br /><br />
+      <input type="submit" value="INVIA" />
+    </form>
+  </body>
+</html>
